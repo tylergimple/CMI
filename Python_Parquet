@@ -1,1 +1,37 @@
-1
+#Install pyarrow. Do this step in its own line first without the comment. Once Installed you don’t need to run again.
+pip install pyarrow
+
+#Load packages
+import pyarrow.parquet as pq
+import pandas as pd
+
+#Call parquet file. Input the file path and file name of your parquet file in the ‘’.
+parquet_file = '/Users/tylergimple/Downloads/CMI_UCB_Display_20240229A.parquet'
+
+#Assign parquet file to a variable called ‘table’
+table = pq.read_table(parquet_file)
+
+#Convert the parquet file to a table
+df = table.to_pandas()
+
+#View head of data to see the first rows and columns.
+print(df.head())
+
+#View all column titles
+print(df.columns.tolist())
+
+#Check for Nulls. Input the columns to check in ‘A’, ‘B’. You can add more column names as needed. The output will be the number of nulls per column. All 0s is required to pas QA.
+columns_to_check = ['A', 'B']
+null_values = df[columns_to_check].isnull().sum()
+print(null_values)
+
+#Check unique values. Input the columns to check in ‘A’, ‘B’. You can add more column names as needed.
+columns_to_check = ['A', 'B']
+for col in columns_to_check:
+    unique_values = df[col].unique()
+    print(f"Unique values in column {col}: {unique_values}")
+
+# List of specific columns to aggregate totals.Input the columns to check in ‘A’, ‘B’. You can add more column names as needed. Cross reference with Tahoe numbers.
+columns_to_aggregate = ['A', 'B']
+totals = df[columns_to_aggregate].sum()
+print(totals)
