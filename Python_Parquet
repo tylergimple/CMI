@@ -20,6 +20,10 @@ print(df.head())
 #View all column titles
 print(df.columns.tolist())
 
+#Convert any numeric columns to numeric format so it can be aggregated by Python
+columns_to_convert = ['num_col_1', 'num_col_2']
+df[columns_to_convert] = df[columns_to_convert].apply(pd.to_numeric)
+
 #Check for Nulls. Input the columns to check in ‘A’, ‘B’. You can add more column names as needed. The output will be the number of nulls per column. All 0s is required to pas QA.
 columns_to_check = ['A', 'B']
 null_values = df[columns_to_check].isnull().sum()
