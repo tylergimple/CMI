@@ -4,7 +4,7 @@ column_names <- colnames(Parquet)
 print(column_names)
 
 # List of specific columns to count nulls
-columns_to_check <- c("dma", "creative_name", "brand")
+columns_to_check <- c("column1", "column2", "column3")
 null_counts <- colSums(is.na(Parquet[columns_to_check]))
 print(null_counts)
 
