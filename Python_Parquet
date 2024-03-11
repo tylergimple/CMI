@@ -31,7 +31,7 @@ for col in columns_to_check:
     unique_values = df[col].unique()
     print(f"Unique values in column {col}: {unique_values}")
 
-# List of specific columns to aggregate totals.Input the columns to check in ‘A’, ‘B’. You can add more column names as needed. Cross reference with Tahoe numbers.
+# List of specific columns to aggregate totals. Input the columns to check in ‘A’, ‘B’. You can add more column names as needed. Cross reference with Tahoe numbers.
 columns_to_aggregate = ['A', 'B']
 totals = df[columns_to_aggregate].sum()
 print(totals)
