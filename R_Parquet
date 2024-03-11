@@ -1,1 +1,23 @@
-1
+Parquet<-as.data.frame(read.csv("CMI.csv"))
+
+column_names <- colnames(Parquet)
+print(column_names)
+
+# List of specific columns to count nulls
+columns_to_check <- c("dma", "creative_name", "brand")
+null_counts <- colSums(is.na(Parquet[columns_to_check]))
+print(null_counts)
+
+# List of specific columns to find unique values. Replace column names inside the "".
+columns_to_check <- c("dma", "creative_name", "brand")
+unique_values <- lapply(Parquet[columns_to_check], unique)
+print(unique_values)
+
+# List of specific columns to aggregate sums
+columns_to_sum <- c("column1", "column2", "column3")
+column_sums <- colSums(df[columns_to_sum], na.rm = TRUE)
+
+# Print the sums of specific columns
+columns_to_sum <- c("impressions", "clicks")
+column_sums <- colSums(Parquet[columns_to_sum], na.rm = TRUE)
+print(column_sums)
