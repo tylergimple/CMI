@@ -20,7 +20,7 @@ print(df.head())
 #View all column titles
 print(df.columns.tolist())
 
-#Convert any numeric columns to numeric format so it can be aggregated by Python
+#Convert any numeric columns to numeric format so it can be aggregated by Python. You can add more column names as needed.
 columns_to_convert = ['num_col_1', 'num_col_2']
 df[columns_to_convert] = df[columns_to_convert].apply(pd.to_numeric)
 
